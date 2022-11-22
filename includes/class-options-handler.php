@@ -311,7 +311,7 @@ class Options_Handler {
 									),
 									admin_url( 'options-general.php' )
 								),
-								'scope'         => 'read:statuses read:accounts',
+								'scope'         => 'read:statuses read:favourites read:accounts',
 							)
 						);
 						?>
@@ -428,7 +428,7 @@ class Options_Handler {
 							'options-general.php'
 						)
 					), // Allowed redirect URLs.
-					'scopes'        => 'read:accounts read:statuses',
+					'scopes'        => 'read:accounts read:favourites read:statuses',
 					'website'       => home_url(),
 				),
 			)
