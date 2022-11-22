@@ -8,6 +8,7 @@ Thumbs.db
 # ignore Editor files
 *.sublime-project
 *.sublime-workspace
+*.code-workspace
 *.komodoproject
 
 # ignore log files, databases and shell scripts
