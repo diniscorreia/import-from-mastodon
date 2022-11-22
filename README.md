@@ -1,6 +1,6 @@
 *This is a fork of [Jan Boddez](https://github.com/janboddez)’s [Import From Mastodon](https://github.com/janboddez/import-from-mastodon). It adds an additional option to import favourites as well.*
 
-*A small limitation: Mastodon’s API doesn’t currently return a timestamp for when a toot was favourited, so the imported faves are created with the current date (while not great, seems like a better option then using the original toot’s date).*
+*A small limitation: Mastodon’s API doesn’t currently return a timestamp for when a toot was favourited, so the imported faves are created with the current date (while not great, seems like a better option than using the original toot’s date).*
 
 ---
 
