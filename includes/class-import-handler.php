@@ -346,15 +346,15 @@ class Import_Handler {
 		}
 
 		$body     = wp_remote_retrieve_body( $response );
-		$statuses = json_decode( $body );
+		$favourites = json_decode( $body );
 
-		if ( empty( $statuses ) || ! is_array( $statuses ) ) {
+		if ( empty( $favourites ) || ! is_array( $favourites ) ) {
 			error_log( '[Import From Mastodon] No new favourites found.' ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
 			return;
 		}
 
 		// Reverse the array, so that the most recent status is inserted last.
-		$statuses = array_reverse( $statuses );
+		$favourites = array_reverse( $favourites );
 
 		foreach ( $favourites as $favourite ) {
 			if ( isset( $favourite->visibility ) && 'direct' === $favourite->visibility ) {
