@@ -23,6 +23,7 @@ class Options_Handler {
 		'post_format'            => '',
 		'include_reblogs'        => false,
 		'include_replies'        => false,
+		'include_favourites'     => false,
 		'tags'                   => '',
 		'denylist'               => '',
 		'post_author'            => 0,
@@ -158,9 +159,10 @@ class Options_Handler {
 		}
 
 		// These can be either `"1"` or `true`.
-		$this->options['include_reblogs'] = ! empty( $settings['include_reblogs'] );
-		$this->options['include_replies'] = ! empty( $settings['include_replies'] );
-		$this->options['public_only']     = ! empty( $settings['public_only'] );
+		$this->options['include_reblogs']    = ! empty( $settings['include_reblogs'] );
+		$this->options['include_replies']    = ! empty( $settings['include_replies'] );
+		$this->options['include_favourites'] = ! empty( $settings['include_favourites'] );
+		$this->options['public_only']        = ! empty( $settings['public_only'] );
 
 		// Sanitizing text(area) fields is tricky, especially when data needs to
 		// be kept intact. Anyhow, let's see how this works out.
@@ -263,6 +265,11 @@ class Options_Handler {
 						<p class="description"><?php esc_html_e( 'Import replies, too?', 'import-from-mastodon' ); ?></p></td>
 					</tr>
 					<tr valign="top">
+						<th scope="row"><?php esc_html_e( 'Favourites', 'import-from-mastodon' ); ?></th>
+						<td><label><input type="checkbox" id="import_from_mastodon_settings[include_favourites]" name="import_from_mastodon_settings[include_favourites]" value="1" <?php checked( ! empty( $this->options['include_favourites'] ) ); ?>/> <?php esc_html_e( 'Include favourites?' ); ?></label>
+						<p class="description"><?php esc_html_e( 'Import favourites, too?', 'import-from-mastodon' ); ?></p></td>
+					</tr>
+					<tr valign="top">
 						<th scope="row"><label for="import_from_mastodon_settings[tags]"><?php esc_html_e( 'Tags', 'import-from-mastodon' ); ?></label></th>
 						<td><input type="text" id="import_from_mastodon_settings[tags]" name="import_from_mastodon_settings[tags]" style="min-width: 40%;" value="<?php echo esc_attr( $this->options['tags'] ); ?>" />
 						<p class="description"><?php _e( 'Import only statuses with <strong>any</strong> of these (comma-separated) tags. (Leave blank to import all statuses.)', 'import-from-mastodon' ); // phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction ?></p></td>
@@ -311,7 +318,7 @@ class Options_Handler {
 									),
 									admin_url( 'options-general.php' )
 								),
-								'scope'         => 'read:statuses read:accounts',
+								'scope'         => 'read:statuses read:favourites read:accounts',
 							)
 						);
 						?>
@@ -428,7 +435,7 @@ class Options_Handler {
 							'options-general.php'
 						)
 					), // Allowed redirect URLs.
-					'scopes'        => 'read:accounts read:statuses',
+					'scopes'        => 'read:accounts read:favourites read:statuses',
 					'website'       => home_url(),
 				),
 			)
