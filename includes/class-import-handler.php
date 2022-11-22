@@ -394,7 +394,7 @@ class Import_Handler {
 
 			// Add a little bit of context.
 			if ( ! empty( $content ) ) {
-				$content  = '<div class="h-cite u-favorite-of"><blockquote>' . PHP_EOL . '<div class="e-content">' . $content . '</div>' . PHP_EOL;
+				$content  = '<div class="h-cite u-like-of"><blockquote>' . PHP_EOL . '<div class="e-content">' . $content . '</div>' . PHP_EOL;
 				$content .= '&mdash;<a class="u-url" href="' . esc_url( $favourite->url ) . '" rel="nofollow">@' . esc_html( $favourite->account->username ) . '</a>';
 				$content .= PHP_EOL . '</blockquote></div>';
 			}
