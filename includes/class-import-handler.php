@@ -299,6 +299,12 @@ class Import_Handler {
 	 * Grabs favourites off Mastodon and adds 'em as WordPress posts.
 	 */
 	public function get_favourites() {
+		if ( empty( $this->options['include_favourites'] ) ) {
+			// If the option isn't set we should probably remove the cron job, maybe?
+			// Anyway, this works for now.
+			return;
+		}
+
 		if ( empty( $this->options['mastodon_access_token'] ) ) {
 			return;
 		}

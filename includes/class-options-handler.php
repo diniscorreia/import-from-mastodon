@@ -23,6 +23,7 @@ class Options_Handler {
 		'post_format'            => '',
 		'include_replies'        => false,
 		'include_replies'        => false,
+		'include_favourites'     => false,
 		'tags'                   => '',
 		'denylist'               => '',
 		'post_author'            => 0,
@@ -158,9 +159,10 @@ class Options_Handler {
 		}
 
 		// These can be either `"1"` or `true`.
-		$this->options['include_reblogs'] = ! empty( $settings['include_reblogs'] );
-		$this->options['include_replies'] = ! empty( $settings['include_replies'] );
-		$this->options['public_only']     = ! empty( $settings['public_only'] );
+		$this->options['include_reblogs']    = ! empty( $settings['include_reblogs'] );
+		$this->options['include_replies']    = ! empty( $settings['include_replies'] );
+		$this->options['include_favourites'] = ! empty( $settings['include_favourites'] );
+		$this->options['public_only']        = ! empty( $settings['public_only'] );
 
 		// Sanitizing text(area) fields is tricky, especially when data needs to
 		// be kept intact. Anyhow, let's see how this works out.
@@ -261,6 +263,11 @@ class Options_Handler {
 						<th scope="row"><?php esc_html_e( 'Replies', 'import-from-mastodon' ); ?></th>
 						<td><label><input type="checkbox" id="import_from_mastodon_settings[include_replies]" name="import_from_mastodon_settings[include_replies]" value="1" <?php checked( ! empty( $this->options['include_replies'] ) ); ?>/> <?php esc_html_e( 'Include replies?' ); ?></label>
 						<p class="description"><?php esc_html_e( 'Import replies, too?', 'import-from-mastodon' ); ?></p></td>
+					</tr>
+					<tr valign="top">
+						<th scope="row"><?php esc_html_e( 'Favourites', 'import-from-mastodon' ); ?></th>
+						<td><label><input type="checkbox" id="import_from_mastodon_settings[include_favourites]" name="import_from_mastodon_settings[include_favourites]" value="1" <?php checked( ! empty( $this->options['include_favourites'] ) ); ?>/> <?php esc_html_e( 'Include favourites?' ); ?></label>
+						<p class="description"><?php esc_html_e( 'Import favourites, too?', 'import-from-mastodon' ); ?></p></td>
 					</tr>
 					<tr valign="top">
 						<th scope="row"><label for="import_from_mastodon_settings[tags]"><?php esc_html_e( 'Tags', 'import-from-mastodon' ); ?></label></th>
