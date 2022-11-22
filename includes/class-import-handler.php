@@ -423,7 +423,7 @@ class Import_Handler {
 				'post_content'  => $content,
 				'post_status'   => isset( $this->options['post_status'] ) ? $this->options['post_status'] : 'publish',
 				'post_type'     => isset( $this->options['post_type'] ) ? $this->options['post_type'] : 'post', // There used to be a `post_type` setting.
-				'post_date_gmt' => ! empty( $favourite->created_at ) ? date( 'Y-m-d H:i:s', strtotime( $favourite->created_at ) ) : '', // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+				'post_date_gmt' => '', // There's no timestamp for favourites on Mastodon's API, so the best we can do it use the current time – it's a terrible idea for importing old faves, but works better for new faves than using the date of the faved toot I think
 				'meta_input'    => array(),
 			);
 
