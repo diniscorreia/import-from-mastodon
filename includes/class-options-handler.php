@@ -21,7 +21,7 @@ class Options_Handler {
 		'mastodon_access_token'  => '',
 		'post_status'            => 'publish',
 		'post_format'            => '',
-		'include_replies'        => false,
+		'include_reblogs'        => false,
 		'include_replies'        => false,
 		'tags'                   => '',
 		'denylist'               => '',
