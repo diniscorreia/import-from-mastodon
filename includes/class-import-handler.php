@@ -332,7 +332,7 @@ class Import_Handler {
 		);
 
 		$response = wp_remote_get(
-			esc_url_raw( $this->options['mastodon_host'] . '/api/v1/accounts/favourites?' . $query_string ),
+			esc_url_raw( $this->options['mastodon_host'] . '/api/v1/favourites?' . $query_string ),
 			array(
 				'headers' => $headers,
 				'timeout' => 11,
