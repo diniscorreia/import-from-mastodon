@@ -1,7 +1,9 @@
-_This is a fork of [Jan Boddez](https://github.com/janboddez)’s [Import From Mastodon](https://github.com/janboddez/import-from-mastodon). It adds an additional option to import favourites as well._
+*This is a fork of [Jan Boddez](https://github.com/janboddez)’s [Import From Mastodon](https://github.com/janboddez/import-from-mastodon). It adds an additional option to import favourites as well.*
 
-_A small limitation: Mastodon’s API doesn’t currently return a timestamp for when a toot was favourited, so the imported faves are created with the current date (while not great, seems like a better option then using the original toot’s date)._
+*A small limitation: Mastodon’s API doesn’t currently return a timestamp for when a toot was favourited, so the imported faves are created with the current date (while not great, seems like a better option then using the original toot’s date).*
+
 ---
+
 # Import From Mastodon
 Automatically turn toots—short messages on [Mastodon](https://joinmastodon.org/)—into WordPress posts.
 
