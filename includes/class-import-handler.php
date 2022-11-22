@@ -319,6 +319,8 @@ class Import_Handler {
 		);
 		
 		/* @todo: Figure out pagination. */
+		/* https://docs.joinmastodon.org/api/guidelines/#pagination */
+
 		// if ( isset( $this->options['latest_favourite'] ) ) {
 		// 	$args['since_id'] = $this->options['latest_favourite'];
 		// 	$args['limit']    = apply_filters( 'import_from_mastodon_limit', 40 ); // Lowering this number might prevent timeouts but could lead to skipped faves.
@@ -392,7 +394,7 @@ class Import_Handler {
 				)
 			);
 
-			// Add a little bit of context.
+			// Add a some context.
 			if ( ! empty( $content ) ) {
 				$content  = '<div class="h-cite u-like-of"><blockquote>' . PHP_EOL . '<div class="e-content">' . $content . '</div>' . PHP_EOL;
 				$content .= '&mdash;<a class="u-url" href="' . esc_url( $favourite->url ) . '" rel="nofollow">@' . esc_html( $favourite->account->username ) . '</a>';
