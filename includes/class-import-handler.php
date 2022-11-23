@@ -57,12 +57,11 @@ class Import_Handler {
 		$args = array(
 			'exclude_reblogs' => empty( $this->options['include_reblogs'] ),
 			'exclude_replies' => empty( $this->options['include_replies'] ),
-			'limit'           => 1, // Initially, import only one status.
+			'limit'           => apply_filters( 'import_from_mastodon_limit', 40 ) // Lowering this number might prevent timeouts but could lead to skipped toots.
 		);
 
 		if ( isset( $this->options['latest_toot'] ) ) {
 			$args['since_id'] = $this->options['latest_toot'];
-			$args['limit']    = apply_filters( 'import_from_mastodon_limit', 40 ); // Lowering this number might prevent timeouts but could lead to skipped toots.
 		}
 
 		$query_string = http_build_query( $args );
@@ -329,8 +328,9 @@ class Import_Handler {
 
 		// if ( isset( $this->options['latest_favourite'] ) ) {
 		// 	$args['since_id'] = $this->options['latest_favourite'];
-		// 	$args['limit']    = apply_filters( 'import_from_mastodon_limit', 40 ); // Lowering this number might prevent timeouts but could lead to skipped faves.
 		// }
+
+		$args['limit']    = apply_filters( 'import_from_mastodon_limit', 40 ); // Lowering this number might prevent timeouts but could lead to skipped faves.
 
 		$query_string = http_build_query( $args );
 
@@ -457,7 +457,6 @@ class Import_Handler {
 				continue;
 			}
 
-			// We use this hook to save the most recently imported toot's ID.
 			do_action( 'import_from_mastodon_after_import', $post_id, $favourite );
 
 			if ( ! empty( $favourite->media_attachments ) ) {
