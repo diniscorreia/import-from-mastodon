@@ -610,7 +610,11 @@ class Options_Handler {
 	 * @param stdObj $status  Corresponding Mastodon status.
 	 */
 	public function set_latest_toot( $post_id, $status ) {
-		// Add (or update) latest toot ID.
+		// Add (or update) latest toot ID – except if it's a favourite.
+		if ( ! empty( $status->favourited  ) ) {
+			return;
+		}
+
 		$this->options['latest_toot'] = $status->id;
 		update_option( 'import_from_mastodon_settings', $this->options, false );
 	}
