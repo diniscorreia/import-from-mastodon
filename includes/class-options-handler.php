@@ -392,7 +392,6 @@ class Options_Handler {
 				<?php
 			}
 			?>
-			<p>Latest toot ID: <?php echo $this->options['latest_toot']; ?><p>
 		</div>
 		<?php
 	}
